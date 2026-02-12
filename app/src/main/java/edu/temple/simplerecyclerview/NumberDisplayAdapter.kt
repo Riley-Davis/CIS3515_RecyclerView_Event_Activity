@@ -13,12 +13,13 @@ import org.w3c.dom.Text
 class NumberDisplayAdapter (private val numbers: Array<Int>, private val func: (Float) -> Unit) : RecyclerView.Adapter<NumberDisplayAdapter.NumberViewHolder>() {
 
     // TODO (Step 1b: Invoke lambda via onClickListener)
+    private val textViewItems = numbers
     inner class NumberViewHolder (layout: View) : RecyclerView.ViewHolder (layout) {
         // enumerate views inside layout
         val textView: TextView = layout.findViewById<TextView>(R.id.textView)
 
         init {
-            textView.setOnClickListener { func(textView.text.toString().toFloat()) }
+            textView.setOnClickListener { func(textViewItems[adapterPosition].toFloat()) }
         }
 
     }
